@@ -1,0 +1,116 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP to Maharashtra Road Journey</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="leaflet-container">
+        <div class="leaflet-header">
+            <div class="header-decoration"></div>
+            <h1>Madhya Pradesh to Maharashtra</h1>
+            <p>An Epic Road Journey Through Central India</p>
+        </div>
+        
+        <div class="route-container">
+            <div class="map-section">
+                <h2 class="map-title">Interactive Road Route Map</h2>
+                <div id="routeMap"></div>
+                
+                <div class="car-controls">
+                    <button id="startDrive" class="car-btn">Start Drive</button>
+                    <button id="pauseDrive" class="car-btn" disabled>Pause</button>
+                    <button id="resetDrive" class="car-btn">Reset</button>
+                </div>
+                <div class="car-status" id="carStatus">Ready to start the journey from Bhopal to Mumbai</div>
+            </div>
+            
+            <div class="info-section">
+                <h2 class="info-title">Journey Highlights</h2>
+                <ul class="journey-points">
+                    <li data-lat="23.2599" data-lng="77.4126" class="active">
+                        <div class="point-title">
+                            <i>📍</i> Bhopal, Madhya Pradesh
+                        </div>
+                        <div class="point-desc">
+                            Start your journey from the city of lakes, known for its rich history and culture.
+                        </div>
+                    </li>
+                    <li data-lat="22.7196" data-lng="75.8577">
+                        <div class="point-title">
+                            <i>📍</i> Indore, Madhya Pradesh
+                        </div>
+                        <div class="point-desc">
+                            Experience the street food capital of India before heading towards Maharashtra.
+                        </div>
+                    </li>
+                    <li data-lat="20.9042" data-lng="74.7749">
+                        <div class="point-title">
+                            <i>📍</i> Dhule, Maharashtra
+                        </div>
+                        <div class="point-desc">
+                            Gateway to Maharashtra with beautiful landscapes and historical sites.
+                        </div>
+                    </li>
+                    <li data-lat="20.0058" data-lng="73.7906">
+                        <div class="point-title">
+                            <i>📍</i> Nashik, Maharashtra
+                        </div>
+                        <div class="point-desc">
+                            Explore the wine capital of India and ancient temples along the Godavari river.
+                        </div>
+                    </li>
+                    <li data-lat="18.5204" data-lng="73.8567">
+                        <div class="point-title">
+                            <i>📍</i> Pune, Maharashtra
+                        </div>
+                        <div class="point-desc">
+                            Cultural hub with a blend of history and modernity, surrounded by hills.
+                        </div>
+                    </li>
+                    <li data-lat="19.0760" data-lng="72.8777">
+                        <div class="point-title">
+                            <i>📍</i> Mumbai, Maharashtra
+                        </div>
+                        <div class="point-desc">
+                            Final destination - the bustling financial capital of India with endless attractions.
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="distance-info">
+                    <h3>Total Distance: Approximately 800 km</h3>
+                    <p>Estimated Travel Time: 14-16 hours by road</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="leaflet-footer">
+            <p>Plan your road trip from Madhya Pradesh to Maharashtra | Explore the heart of India</p>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+   <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
