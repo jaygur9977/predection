@@ -128,7 +128,7 @@
             background: #ffd43b;
             border-radius: 50%;
             box-shadow: 0 0 40px #ffa94d, 0 0 80px #ffa94d;
-            animation: moveSun 15s linear infinite;
+            animation: moveSun 8s linear infinite;
         }
         
         .cloud {
@@ -137,7 +137,7 @@
             border-radius: 50%;
             filter: blur(5px);
             opacity: 0.9;
-            animation: moveCloud 20s linear infinite;
+            animation: moveCloud 12s linear infinite;
         }
         
         .raindrop {
@@ -146,7 +146,7 @@
             height: 20px;
             background: #339af0;
             border-radius: 5px;
-            animation: rainFall 1.5s linear infinite;
+            animation: rainFall 1s linear infinite;
         }
         
         .snowflake {
@@ -156,7 +156,7 @@
             background: white;
             border-radius: 50%;
             filter: blur(1px);
-            animation: snowFall 10s linear infinite;
+            animation: snowFall 6s linear infinite;
         }
         
         .leaf {
@@ -166,7 +166,7 @@
             background: #a9e34b;
             border-radius: 0 50% 50% 50%;
             transform: rotate(45deg);
-            animation: windBlow 8s linear infinite;
+            animation: windBlow 5s linear infinite;
         }
         
         /* Animation Keyframes */

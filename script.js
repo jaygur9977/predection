@@ -33,26 +33,20 @@
             clearAnimations();
             document.getElementById('sunny').classList.add('active');
             
-            // Create multiple suns
-            currentAnimation = setInterval(() => {
-                const sun = document.createElement('div');
-                sun.classList.add('sun');
-                
-                // Random starting positions
-                const startPos = Math.random() > 0.5 ? -100 : window.innerWidth + 100;
-                const delay = Math.random() * 5;
-                
-                sun.style.left = `${startPos}px`;
-                sun.style.top = `${Math.random() * window.innerHeight}px`;
-                sun.style.animationDelay = `${delay}s`;
-                
-                container.appendChild(sun);
-                
-                // Remove element after animation completes
-                setTimeout(() => {
-                    sun.remove();
-                }, 15000 + (delay * 1000));
-            }, 1000);
+            // Create only one sun
+            const sun = document.createElement('div');
+            sun.classList.add('sun');
+            
+            // Start from top-left
+            sun.style.left = `-100px`;
+            sun.style.top = `-100px`;
+            
+            container.appendChild(sun);
+            
+            // Remove element after animation completes
+            setTimeout(() => {
+                sun.remove();
+            }, 8000);
         }
         
         function startCloudy() {
@@ -65,7 +59,7 @@
                 cloud.classList.add('cloud');
                 
                 const size = 50 + Math.random() * 100;
-                const delay = Math.random() * 5;
+                const delay = Math.random() * 2;
                 const startTop = Math.random() * (window.innerHeight / 2);
                 
                 cloud.style.width = `${size}px`;
@@ -78,8 +72,8 @@
                 // Remove element after animation completes
                 setTimeout(() => {
                     cloud.remove();
-                }, 20000 + (delay * 1000));
-            }, 1500);
+                }, 12000 + (delay * 1000));
+            }, 1000);
         }
         
         function startRainy() {
@@ -93,8 +87,8 @@
                     raindrop.classList.add('raindrop');
                     
                     const left = Math.random() * window.innerWidth;
-                    const delay = Math.random() * 2;
-                    const duration = 1 + Math.random() * 1;
+                    const delay = Math.random() * 1;
+                    const duration = 0.5 + Math.random() * 0.5;
                     
                     raindrop.style.left = `${left}px`;
                     raindrop.style.animationDelay = `${delay}s`;
@@ -107,7 +101,7 @@
                         raindrop.remove();
                     }, (duration * 1000) + (delay * 1000));
                 }
-            }, 200);
+            }, 100);
         }
         
         function startSnowy() {
@@ -120,8 +114,8 @@
                 snowflake.classList.add('snowflake');
                 
                 const left = Math.random() * window.innerWidth;
-                const delay = Math.random() * 5;
-                const duration = 5 + Math.random() * 5;
+                const delay = Math.random() * 2;
+                const duration = 3 + Math.random() * 3;
                 const size = 5 + Math.random() * 5;
                 
                 snowflake.style.left = `${left}px`;
@@ -136,7 +130,7 @@
                 setTimeout(() => {
                     snowflake.remove();
                 }, (duration * 1000) + (delay * 1000));
-            }, 300);
+            }, 150);
         }
         
         function startWindy() {
@@ -150,8 +144,8 @@
                 
                 const startPos = Math.random() > 0.5 ? -100 : window.innerWidth + 100;
                 const top = Math.random() * window.innerHeight;
-                const delay = Math.random() * 5;
-                const duration = 5 + Math.random() * 5;
+                const delay = Math.random() * 2;
+                const duration = 3 + Math.random() * 2;
                 const size = 10 + Math.random() * 10;
                 
                 leaf.style.left = `${startPos}px`;
@@ -167,7 +161,7 @@
                 setTimeout(() => {
                     leaf.remove();
                 }, (duration * 1000) + (delay * 1000));
-            }, 500);
+            }, 250);
         }
         
         // Add event listeners to buttons
@@ -177,6 +171,5 @@
         document.getElementById('snowy').addEventListener('click', startSnowy);
         document.getElementById('windy').addEventListener('click', startWindy);
         
-        // Start with sunny animation by default
-        setTimeout(startSunny, 1000);
-    
+        // Start with cloudy animation by default
+        setTimeout(startCloudy, 1000);
