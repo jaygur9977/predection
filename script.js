@@ -1,20 +1,21 @@
 
-        // Initialize map
-        const map = L.map('map').setView([40.7128, -74.0060], 13); // Default to New York
+        // Initialize map with Bhopal, India as default
+        const map = L.map('map').setView([23.2599, 77.4126], 13);
         
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         
-        // Add a marker
-        L.marker([40.7128, -74.0060]).addTo(map)
-            .bindPopup('Hello! This is where the weather happens!')
+        // Add a marker for Bhopal
+        const marker = L.marker([23.2599, 77.4126]).addTo(map)
+            .bindPopup('Bhopal, India<br>Current weather: Cloudy')
             .openPopup();
         
         // Weather animation functions
         const container = document.getElementById('animation-container');
         let currentAnimation = null;
+        let currentWeather = 'cloudy';
         
         function clearAnimations() {
             container.innerHTML = '';
@@ -32,6 +33,7 @@
         function startSunny() {
             clearAnimations();
             document.getElementById('sunny').classList.add('active');
+            currentWeather = 'sunny';
             
             // Create only one sun
             const sun = document.createElement('div');
@@ -52,6 +54,7 @@
         function startCloudy() {
             clearAnimations();
             document.getElementById('cloudy').classList.add('active');
+            currentWeather = 'cloudy';
             
             // Create clouds
             currentAnimation = setInterval(() => {
@@ -79,6 +82,7 @@
         function startRainy() {
             clearAnimations();
             document.getElementById('rainy').classList.add('active');
+            currentWeather = 'rainy';
             
             // Create raindrops
             currentAnimation = setInterval(() => {
@@ -107,6 +111,7 @@
         function startSnowy() {
             clearAnimations();
             document.getElementById('snowy').classList.add('active');
+            currentWeather = 'snowy';
             
             // Create snowflakes
             currentAnimation = setInterval(() => {
@@ -136,6 +141,7 @@
         function startWindy() {
             clearAnimations();
             document.getElementById('windy').classList.add('active');
+            currentWeather = 'windy';
             
             // Create leaves
             currentAnimation = setInterval(() => {
@@ -164,12 +170,47 @@
             }, 250);
         }
         
-        // Add event listeners to buttons
+        // Add event listeners to weather buttons
         document.getElementById('sunny').addEventListener('click', startSunny);
         document.getElementById('cloudy').addEventListener('click', startCloudy);
         document.getElementById('rainy').addEventListener('click', startRainy);
         document.getElementById('snowy').addEventListener('click', startSnowy);
         document.getElementById('windy').addEventListener('click', startWindy);
         
-        // Start with cloudy animation by default
+        // City selection functionality
+        document.querySelectorAll('.city-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const city = this.getAttribute('data-city');
+                const lat = parseFloat(this.getAttribute('data-lat'));
+                const lng = parseFloat(this.getAttribute('data-lng'));
+                
+                // Update map
+                map.setView([lat, lng], 13);
+                marker.setLatLng([lat, lng]);
+                
+                // Get random weather for this city
+                const weatherTypes = ['sunny', 'cloudy', 'rainy', 'windy'];
+                const randomWeather = weatherTypes[Math.floor(Math.random() * weatherTypes.length)];
+                
+                // Update location info
+                document.querySelector('.location-info h3').textContent = city;
+                document.querySelector('.location-info p:nth-child(2)').textContent = `Current weather: ${randomWeather.charAt(0).toUpperCase() + randomWeather.slice(1)}`;
+                document.querySelector('.location-info p:nth-child(3)').textContent = `Animation: ${randomWeather.charAt(0).toUpperCase() + randomWeather.slice(1)}`;
+                
+                // Start appropriate weather animation
+                switch(randomWeather) {
+                    case 'sunny': startSunny(); break;
+                    case 'cloudy': startCloudy(); break;
+                    case 'rainy': startRainy(); break;
+                    case 'snowy': startSnowy(); break;
+                    case 'windy': startWindy(); break;
+                    default: startCloudy();
+                }
+                
+                // Update marker popup
+                marker.bindPopup(`${city}<br>Current weather: ${randomWeather.charAt(0).toUpperCase() + randomWeather.slice(1)}`).openPopup();
+            });
+        });
+        
+        // Start with cloudy animation by default for Bhopal
         setTimeout(startCloudy, 1000);

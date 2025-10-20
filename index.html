@@ -5,34 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Animation Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Weather Animation Map</h1>
-            <p>Click the buttons to see different weather animations!</p>
+            <p>Click on a city to see a random weather animation!</p>
+            
+            <div class="city-controls">
+                <button class="city-btn" data-city="Bhopal" data-lat="23.2599" data-lng="77.4126">Bhopal</button>
+                <button class="city-btn" data-city="Delhi" data-lat="28.6139" data-lng="77.2090">Delhi</button>
+                <button class="city-btn" data-city="Indore" data-lat="22.7196" data-lng="75.8577">Indore</button>
+                <button class="city-btn" data-city="Mumbai" data-lat="19.0760" data-lng="72.8777">Mumbai</button>
+                <button class="city-btn" data-city="Chennai" data-lat="13.0827" data-lng="80.2707">Chennai</button>
+            </div>
         </header>
         
         <div class="map-container">
             <div id="map"></div>
             <div class="animation-container" id="animation-container"></div>
             
+            <div class="location-info">
+                <h3>Bhopal, India</h3>
+                <p>Current weather: Cloudy</p>
+                <p>Animation: Cloudy</p>
+            </div>
+            
             <div class="weather-controls">
-                <button class="weather-btn" id="sunny">☀️</button>
-                <button class="weather-btn" id="cloudy">☁️</button>
-                <button class="weather-btn" id="rainy">🌧️</button>
-                <button class="weather-btn" id="snowy">❄️</button>
-                <button class="weather-btn" id="windy">🍃</button>
+                <button class="weather-btn" id="sunny" title="Sunny">☀️</button>
+                <button class="weather-btn" id="cloudy" title="Cloudy">☁️</button>
+                <button class="weather-btn" id="rainy" title="Rainy">🌧️</button>
+                <button class="weather-btn" id="snowy" title="Snowy">❄️</button>
+                <button class="weather-btn" id="windy" title="Windy">🍃</button>
             </div>
         </div>
         
         <div class="instructions">
-            <p>Watch as the weather animations move across the screen from both sides!</p>
+            <p>Click on a city to see random weather animations or use the weather buttons to control the animation!</p>
         </div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="script.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>
